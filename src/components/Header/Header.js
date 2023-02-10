@@ -13,7 +13,7 @@ function Header() {
                 </div>
                 <span>Instagoraeng</span>
             </Site>
-            <FontAwesomeIcon icon={faPlus} />
+            <FontAwesomeIcon icon={faPlus} color="#f1404b" />
         </Head>
     );
 }
@@ -23,19 +23,24 @@ export default Header;
 const Head = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: #a3daff;
+    height: 60px;
+    font-size: 30px;
+    padding: 0 19px;
 `;
 
 const Site = styled.div`
     display: flex;
 
     & > div > img {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
     }
 
     & span {
-        font-size: 20px;
+        margin-left: 5px;
+        font-size: 30px;
         font-family: 'googleKalam';
     }
 `;

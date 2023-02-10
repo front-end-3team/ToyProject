@@ -1,7 +1,8 @@
-import "./App.css";
-import Modal from "./pages/Modal/Modal";
-// import Header from './components/Header/Header';
-import { MockPost } from "./__mocks__/post";
+import './App.css';
+import Modal from './pages/Modal/Modal';
+import Header from './components/Header/Header';
+import Index from './pages/PostList/components/Post/index';
+import { MockPost } from './__mocks__/post';
 
 function App() {
     const Posts = MockPost(5);
@@ -10,8 +11,9 @@ function App() {
 
     return (
         <>
-            {/* <Header /> */}
-            <Modal />
+            <Header />
+            {/* <Modal /> */}
+            <Index />
         </>
     );
 }

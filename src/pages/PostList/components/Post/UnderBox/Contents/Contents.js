@@ -1,26 +1,28 @@
+import * as P from '../style';
+
 function Contents() {
     return (
-        <div>
-            <div>
+        <P.ContentsBox>
+            <P.Profile>
                 <div>img</div>
                 <div>닉네임</div>
-            </div>
+            </P.Profile>
 
-            <div>
+            <P.ContentsCenter>
                 <div>
                     <div>
                         <div>id030303</div>
                         <div>작성 날짜</div>
                     </div>
                     <div>
-                        <button>수정</button>
-                        <button>삭제</button>
+                        <button>✏️️</button>
+                        <button>🗑️</button>
                     </div>
                 </div>
 
                 <div>내용</div>
-            </div>
-        </div>
+            </P.ContentsCenter>
+        </P.ContentsBox>
     );
 }
 

@@ -3,18 +3,30 @@ import Contents from "./UnderBox/Contents/Contents";
 import Comments from "./UnderBox/Comments/Comments";
 import Pictures from "./Picture/Pictures";
 import styled from "styled-components";
+import { MockPost } from "../../../../__mocks__/post";
 
 function Index() {
+  const Posts = MockPost(10);
+
   return (
     <>
       <Header />
-      <MainBox>
+      {Posts.map((post) => (
+        <MainBox key={post.id}>
+          <Pictures img={post.Post_img} />
+          <UnderBox>
+            <P.Contents contents={post} />
+            <P.Comments comments={post.Comments} />
+          </UnderBox>
+        </MainBox>
+      ))}
+      {/* <MainBox>
         <Pictures />
         <UnderBox>
           <P.Contents />
           <P.Comments />
         </UnderBox>
-      </MainBox>
+      </MainBox> */}
     </>
   );
 }

@@ -1,14 +1,13 @@
-import Contents from './UnderBox/Contents/Contents';
-import Comments from './UnderBox/Comments/Comments';
-import Pictures from './Picture/Pictures';
-import styled from 'styled-components';
+import Contents from "./UnderBox/Contents/Contents";
+import Comments from "./UnderBox/Comments/Comments";
+import Pictures from "./Picture/Pictures";
+import styled from "styled-components";
 
 function Index() {
     return (
         <>
             <MainBox>
                 <Pictures />
-
                 <UnderBox>
                     <P.Contents />
                     <P.Comments />

@@ -1,10 +1,6 @@
-import { useContext } from "react";
 import styled from "styled-components";
-import { modalContext } from "../../context/ModalContext";
 
 function Modal() {
-    const { modalview, setModalView } = useContext(modalContext);
-
     return (
         <ModalBox>
             <Top>
@@ -41,7 +37,7 @@ function Modal() {
 
             <Button>
                 <button>작성</button>
-                <button onClick={() => setModalView(false)}>취소</button>
+                <button>취소</button>
             </Button>
         </ModalBox>
     );

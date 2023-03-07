@@ -1,20 +1,25 @@
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faPlus } from '@fortawesome/free-solid-svg-icons';
-import siteLogo from '../../assets/images/logo.png';
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faPlus } from "@fortawesome/free-solid-svg-icons";
+import siteLogo from "../../assets/images/logo.png";
+import { isModal } from "../../store/Modal_page";
+import { useContext } from "react";
 
 function Header() {
+    const { isModalOpen, setIsModalOpen } = useContext(isModal);
+
     return (
-        <Head>
+        <S.Head>
             <FontAwesomeIcon icon={faBars} />
-            <Site>
+            <S.Site>
                 <div>
                     <img src={siteLogo} alt="siteLogo.png" />
                 </div>
                 <span>Instagoraeng</span>
-            </Site>
-            <FontAwesomeIcon icon={faPlus} color="#f1404b" />
-        </Head>
+            </S.Site>
+
+            <FontAwesomeIcon icon={faPlus} color="#f1404b" onClick={() => setIsModalOpen(true)} />
+        </S.Head>
     );
 }
 
@@ -41,6 +46,11 @@ const Site = styled.div`
     & span {
         margin-left: 5px;
         font-size: 30px;
-        font-family: 'googleKalam';
+        font-family: "googleKalam";
     }
 `;
+
+const S = {
+    Head,
+    Site,
+};

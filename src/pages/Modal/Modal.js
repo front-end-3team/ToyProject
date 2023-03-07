@@ -1,6 +1,11 @@
-import styled from 'styled-components';
+import { useRef } from "react";
+import { useContext } from "react";
+import styled from "styled-components";
+import { isModal } from "../../store/Modal_page";
 
 function Modal() {
+    const { isModalOpen, setIsModalOpen } = useContext(isModal);
+
     return (
         <ModalBox>
             <Top>
@@ -17,9 +22,9 @@ function Modal() {
                 </div>
             </Top>
 
-            <Title type="text" placeholder="제목을 입력하세요" />
+            <Title name="title" type="text" placeholder="제목을 입력하세요" />
 
-            <Contents name="" id="" cols="30" rows="10" placeholder="내용을 입력하세요"></Contents>
+            <Contents name="content" cols="30" rows="10" placeholder="내용을 입력하세요"></Contents>
 
             {/* <FileBox>
                 <input placeholder="첨부파일" />
@@ -31,14 +36,14 @@ function Modal() {
 
             <Button>
                 <button>작성</button>
-                <button>취소</button>
+                <button onClick={() => setIsModalOpen(false)}>취소</button>
             </Button>
         </ModalBox>
     );
 }
 export default Modal;
 
-const ModalBox = styled.div`
+const ModalBox = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: space-between;

@@ -1,4 +1,4 @@
-import * as P from '../style';
+import * as P from "../style";
 
 function Contents() {
     return (

@@ -1,103 +1,126 @@
-import styled from 'styled-components';
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 function Modal() {
-    return (
-        <ModalBox>
-            <Top>
-                <div>이미지</div>
-                <div>
-                    <div>
-                        <span>아이디</span>
-                        <input placeholder="ID" />
-                    </div>
-                    <div>
-                        <span>닉네임</span>
-                        <input placeholder="NickName" />
-                    </div>
-                </div>
-            </Top>
+  const navigate = useNavigate();
 
-            <Title type="text" placeholder="제목을 입력하세요" />
+  const onNavigateMain = () => {
+    navigate("/");
+  };
 
-            <Contents name="" id="" cols="30" rows="10" placeholder="내용을 입력하세요"></Contents>
+  const onRemoveAlert = () => {
+    if (
+      window.confirm(
+        "지금까지 작성한 것들은 반영되지 않습니다. 정말 삭제하시겠습니까?"
+      )
+    ) {
+      onNavigateMain();
+    }
+  };
 
-            {/* <FileBox>
+  return (
+    <ModalBox>
+      <Top>
+        <div>이미지</div>
+        <div>
+          <div>
+            <span>아이디</span>
+            <input name="id" placeholder="ID" />
+          </div>
+          <div>
+            <span>닉네임</span>
+            <input name="nickname" placeholder="NickName" />
+          </div>
+        </div>
+      </Top>
+
+      <Title type="text" name="title" placeholder="제목을 입력하세요" />
+
+      <Contents
+        name="content"
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="내용을 입력하세요"
+      ></Contents>
+
+      {/* <FileBox>
                 <input placeholder="첨부파일" />
                 <label>📁</label>
                 <input type="file" />
             </FileBox> */}
 
-            <File type="file" />
+      <File type="file" />
 
-            <Button>
-                <button>작성</button>
-                <button>취소</button>
-            </Button>
-        </ModalBox>
-    );
+      <Button>
+        <button onClick={onNavigateMain}>작성</button>
+        <button onClick={onRemoveAlert}>취소</button>
+      </Button>
+    </ModalBox>
+  );
 }
 export default Modal;
 
 const ModalBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 15px 40px;
-    width: 600px;
-    height: 500px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #f4f5f9;
-    border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px 40px;
+  width: 600px;
+  height: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f4f5f9;
+  border-radius: 20px;
 `;
 
 const Top = styled.div`
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    & > div:first-child {
-        padding-right: 20px;
-    }
-    & > div:last-child {
-        font-size: 20px;
-    }
-    & > div:last-child > div > span {
-        font-weight: 800;
-        padding-right: 10px;
-    }
-    & > div:last-child > div > input {
-        font-size: 20px;
-        border: none;
-        background-color: transparent;
-    }
+  & > div:first-child {
+    padding-right: 20px;
+  }
+  & > div:last-child {
+    font-size: 20px;
+  }
+  & > div:last-child > div > span {
+    font-weight: 800;
+    padding-right: 10px;
+  }
+  & > div:last-child > div > input {
+    font-size: 20px;
+    border: none;
+    background-color: transparent;
+  }
 `;
 
 const Title = styled.input`
-    font-size: 20px;
-    padding: 10px 20px;
-    border: none;
-    background-color: transparent;
-    border-bottom: 2px solid black;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid black;
 `;
 
 const Contents = styled.textarea`
-    height: 195px;
-    border: none;
-    background-color: transparent;
-    font-size: 20px;
-    padding: 10px 10px;
-    resize: none;
+  height: 195px;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  padding: 10px 10px;
+  resize: none;
 `;
 
 const File = styled.input`
-    font-size: 20px;
-    padding: 10px 20px;
-    border: none;
-    background-color: transparent;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  background-color: transparent;
 
-    /* & > input:first-child {
+  /* & > input:first-child {
         display: inline-block;
         height: 40px;
         padding: 0 10px;
@@ -128,24 +151,25 @@ const File = styled.input`
     } */
 `;
 
-const Button = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
+const Button = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  & > button {
+    margin: 0px 20px;
+    font-size: 20px;
+    padding: 8px 30px;
     border: none;
-    & > button {
-        margin: 0px 20px;
-        font-size: 20px;
-        padding: 8px 30px;
-        border: none;
-        border-radius: 15px;
+    border-radius: 15px;
+  }
+  & > button {
+    background-color: #252c41;
+    color: white;
+    :hover {
+      background-color: #f1404b;
+      cursor: pointer;
     }
-    & > button {
-        background-color: #252c41;
-        color: white;
-        :hover {
-            background-color: #f1404b;
-        }
-    }
+  }
 `;

@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import { useContext } from "react";
+import styled from "styled-components";
+import { modalContext } from "../../context/ModalContext";
 
 function Modal() {
+    const { modalview, setModalView } = useContext(modalContext);
+
     return (
         <ModalBox>
             <Top>
@@ -19,7 +23,13 @@ function Modal() {
 
             <Title type="text" placeholder="제목을 입력하세요" />
 
-            <Contents name="" id="" cols="30" rows="10" placeholder="내용을 입력하세요"></Contents>
+            <Contents
+                name=""
+                id=""
+                cols="30"
+                rows="10"
+                placeholder="내용을 입력하세요"
+            ></Contents>
 
             {/* <FileBox>
                 <input placeholder="첨부파일" />
@@ -31,7 +41,7 @@ function Modal() {
 
             <Button>
                 <button>작성</button>
-                <button>취소</button>
+                <button onClick={() => setModalView(false)}>취소</button>
             </Button>
         </ModalBox>
     );

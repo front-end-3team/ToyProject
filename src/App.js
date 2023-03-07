@@ -1,7 +1,7 @@
 import "./App.css";
 
 import Header from "./components/Header/Header";
-
+import Modal from "./pages/Modal/Modal";
 import Index from "./pages/PostList/components/Post/index";
 import { MockPost } from "./__mocks__/post";
 

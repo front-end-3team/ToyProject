@@ -1,4 +1,4 @@
-const { default: styled } = require('styled-components');
+const { default: styled } = require("styled-components");
 
 export const ContentsBox = styled.div`
     display: flex;
@@ -15,6 +15,10 @@ export const Profile = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    & > img {
+        border-radius: 50px;
+    }
 
     & > div:last-child {
         margin-top: 5px;
@@ -64,6 +68,10 @@ export const CommentProfile = styled.div`
 
     & > div:last-child {
         margin-top: 5px;
+    }
+
+    & > img {
+        border-radius: 50px;
     }
 `;
 

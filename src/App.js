@@ -7,7 +7,7 @@ import { isModal } from "./store/Modal_page";
 import { useContext } from "react";
 
 function App() {
-    const Posts = MockPost(5);
+    const Posts = MockPost(10);
     /*MockPost 함수의 매개변수 count로 전달한 수 만큼 데이터가 생성됩니다*/
     console.log(Posts);
 
@@ -16,7 +16,9 @@ function App() {
         <>
             <Header />
             {isModalOpen && <Modal />}
-            <Index />
+            {Posts.map((userList) => (
+                <Index userList={userList} />
+            ))}
         </>
     );
 }

@@ -1,17 +1,18 @@
 import * as P from "../style";
 
-function Contents() {
+function Contents({ userList }) {
+    console.log(userList);
     return (
         <P.ContentsBox>
             <P.Profile>
-                <div>img</div>
-                <div>닉네임</div>
+                <img src={userList.User.profile_img} />
+                <div>{userList.User.nick_name}</div>
             </P.Profile>
 
             <P.ContentsCenter>
                 <div>
                     <div>
-                        <div>id030303</div>
+                        <div>{userList.User.id}</div>
                         <div>작성 날짜</div>
                     </div>
                     <div>
@@ -20,7 +21,7 @@ function Contents() {
                     </div>
                 </div>
 
-                <div>내용</div>
+                <div>{userList.content}</div>
             </P.ContentsCenter>
         </P.ContentsBox>
     );

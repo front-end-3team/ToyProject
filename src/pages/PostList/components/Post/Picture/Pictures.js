@@ -1,16 +1,19 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-function Pictures() {
+function Pictures({ userList }) {
+    const postImg = userList.Post_img;
     return (
         <>
-            <Images>img</Images>
+            {postImg.map((el) => (
+                <Images src={el} />
+            ))}
         </>
     );
 }
 
 export default Pictures;
 
-const Images = styled.div`
+const Images = styled.img`
     width: 599px;
     height: 350px;
     border: 1px solid;

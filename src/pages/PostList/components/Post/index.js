@@ -1,17 +1,20 @@
-import Contents from './UnderBox/Contents/Contents';
-import Comments from './UnderBox/Comments/Comments';
-import Pictures from './Picture/Pictures';
-import styled from 'styled-components';
+import Contents from "./UnderBox/Contents/Contents";
+import Comments from "./UnderBox/Comments/Comments";
+import Pictures from "./Picture/Pictures";
+import styled from "styled-components";
 
-function Index() {
+function Index({ userList }) {
+    const commentsUser = userList.Comments;
     return (
         <>
             <MainBox>
-                <Pictures />
+                <Pictures userList={userList} />
 
                 <UnderBox>
-                    <P.Contents />
-                    <P.Comments />
+                    <P.Contents userList={userList} />
+                    {commentsUser.map((commentsUserList) => (
+                        <P.Comments commentsUserList={commentsUserList} />
+                    ))}
                 </UnderBox>
             </MainBox>
         </>

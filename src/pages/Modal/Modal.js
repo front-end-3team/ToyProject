@@ -6,18 +6,26 @@ import { isModal } from "../../store/Modal_page";
 function Modal() {
     const { isModalOpen, setIsModalOpen } = useContext(isModal);
 
+    const modalSubmit = (e) => {
+        e.preventDefault();
+        const userId = e.target.userId.value;
+        const nickName = e.target.nickName.value;
+        const title = e.target.title.value;
+        const content = e.target.content.value;
+    };
+
     return (
-        <ModalBox>
+        <ModalBox onSubmit={modalSubmit}>
             <Top>
                 <div>이미지</div>
                 <div>
                     <div>
                         <span>아이디</span>
-                        <input placeholder="ID" />
+                        <input name="userId" placeholder="ID" />
                     </div>
                     <div>
                         <span>닉네임</span>
-                        <input placeholder="NickName" />
+                        <input name="nickName" placeholder="NickName" />
                     </div>
                 </div>
             </Top>
@@ -35,7 +43,7 @@ function Modal() {
             <File type="file" />
 
             <Button>
-                <button>작성</button>
+                <button type="submit">작성</button>
                 <button onClick={() => setIsModalOpen(false)}>취소</button>
             </Button>
         </ModalBox>

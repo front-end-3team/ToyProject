@@ -1,17 +1,17 @@
-import Contents from './UnderBox/Contents/Contents';
-import Comments from './UnderBox/Comments/Comments';
-import Pictures from './Picture/Pictures';
-import styled from 'styled-components';
+import Contents from "./UnderBox/Contents/Contents";
+import Comments from "./UnderBox/Comments/Comments";
+import Pictures from "./Picture/Pictures";
+import styled from "styled-components";
 
-function Index() {
+function Index({ postlist }) {
+    console.log(postlist);
     return (
         <>
             <MainBox>
                 <Pictures />
-
                 <UnderBox>
-                    <P.Contents />
-                    <P.Comments />
+                    <P.Contents postlist={postlist} />
+                    <P.Comments comments={postlist.Comments} />
                 </UnderBox>
             </MainBox>
         </>

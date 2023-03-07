@@ -1,17 +1,18 @@
-import * as P from '../style';
+import styled from "styled-components";
+import * as P from "../style";
 
-function Contents() {
+function Contents({ postlist }) {
     return (
         <P.ContentsBox>
             <P.Profile>
-                <div>img</div>
-                <div>닉네임</div>
+                <Img src={postlist.User.profile_img} />
+                <div>{postlist.User.nick_name}</div>
             </P.Profile>
 
             <P.ContentsCenter>
                 <div>
                     <div>
-                        <div>id030303</div>
+                        <div>{postlist.User.id}</div>
                         <div>작성 날짜</div>
                     </div>
                     <div>
@@ -20,10 +21,14 @@ function Contents() {
                     </div>
                 </div>
 
-                <div>내용</div>
+                <div>{postlist.content}</div>
             </P.ContentsCenter>
         </P.ContentsBox>
     );
 }
 
 export default Contents;
+
+const Img = styled.img`
+    border-radius: 50%;
+`;

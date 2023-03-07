@@ -8,7 +8,7 @@ function Index({ postlist }) {
     return (
         <>
             <MainBox>
-                <Pictures />
+                <Pictures postImg={postlist.Post_img} />
                 <UnderBox>
                     <P.Contents postlist={postlist} />
                     <P.Comments comments={postlist.Comments} />

@@ -3,7 +3,7 @@ import Comments from './UnderBox/Comments/Comments';
 import Pictures from './Picture/Pictures';
 import styled from 'styled-components';
 
-function Index({ post }) {
+function MainList({ post }) {
     return (
         <>
             <MainBox>
@@ -20,7 +20,7 @@ function Index({ post }) {
     );
 }
 
-export default Index;
+export default MainList;
 
 const MainBox = styled.div`
     margin: 0 auto;

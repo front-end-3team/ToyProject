@@ -1,34 +1,87 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import { modalContext } from "../../context/ModalContext";
 
-function Modal() {
+function Modal({ posts, setPosts }) {
+    //Posts 데이터 받아왔음
     const { modalview, setModalView } = useContext(modalContext);
+    // console.log(Posts);
+    const { inputs, setInputs } = useState("");
 
+    //Modal창 작성 버튼
+    /*
+        1. 작성 버튼 누르면 input값들 객체에 추가 //완료
+        2. modal창 false로 하고 //
+        4. 객체를 변경하기 위해서 post라는 놈을 state로 관리한다?
+        그래야지 unshift를 하던 push를 하던 원본을 교체하려면 이 방법만 있는 건가?
+        3. 이거 맨앞에 추가해야함 //
+    */
+    const addlist = (e) => {
+        e.preventDefault();
+        const Target = e.target;
+        const addInput = {
+            id: "taegi",
+            content: Target.inputContents.value,
+            Post_img: [],
+            User: {
+                id: Target.inputId.value,
+                nick_name: Target.inputNickname.value,
+                profile_img: "",
+            },
+            Comments: [
+                {
+                    User: { id: "", nick_name: "", profile_img: "" },
+                    content: "",
+                    createdAt: "",
+                    id: "",
+                    myComment: "",
+                },
+            ],
+            myPost: "N",
+        };
+        setPosts([addInput, ...posts]);
+        setModalView(false);
+
+        console.log(posts);
+    };
     return (
-        <ModalBox>
+        <ModalBox onSubmit={addlist}>
             <Top>
                 <div>이미지</div>
                 <div>
                     <div>
                         <span>아이디</span>
-                        <input placeholder="ID" />
+                        <input
+                            placeholder="ID"
+                            name="inputId"
+                            // onChange={onPushInputs}
+                        />
                     </div>
                     <div>
                         <span>닉네임</span>
-                        <input placeholder="NickName" />
+                        <input
+                            placeholder="NickName"
+                            name="inputNickname"
+                            // onChange={onPushInputs}
+                        />
                     </div>
                 </div>
             </Top>
 
-            <Title type="text" placeholder="제목을 입력하세요" />
+            <Title
+                type="text"
+                placeholder="제목을 입력하세요"
+                name="inputTitle"
+                // onChange={onPushInputs}
+            />
 
             <Contents
-                name=""
                 id=""
                 cols="30"
                 rows="10"
                 placeholder="내용을 입력하세요"
+                name="inputContents"
+                // onChange={onPushInputs}
             ></Contents>
 
             {/* <FileBox>
@@ -48,7 +101,7 @@ function Modal() {
 }
 export default Modal;
 
-const ModalBox = styled.div`
+const ModalBox = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: space-between;

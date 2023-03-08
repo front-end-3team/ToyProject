@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 function Pictures({ postImg }) {
-    console.log(postImg);
+    // console.log(postImg);
     return (
         <>
             <Images src={postImg[0]}></Images>

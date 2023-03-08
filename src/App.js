@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./App.css";
 
 import Header from "./components/Header/Header";
@@ -12,15 +12,16 @@ import { MockPost } from "./__mocks__/post";
 */
 function App() {
     const Posts = MockPost(10);
+    const [posts, setPosts] = useState(Posts);
     /*MockPost 함수의 매개변수 count로 전달한 수 만큼 데이터가 생성됩니다*/
 
     const { modalview } = useContext(modalContext);
-    console.log(Posts);
+    console.log(posts);
     return (
         <>
-            {modalview && <Modal />}
+            {modalview && <Modal posts={posts} setPosts={setPosts} />}
             <Header />
-            {Posts.map((el) => (
+            {posts.map((el) => (
                 <>
                     <Index postlist={el} />
                 </>

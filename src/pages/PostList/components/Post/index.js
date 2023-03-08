@@ -4,7 +4,7 @@ import Pictures from "./Picture/Pictures";
 import styled from "styled-components";
 
 function Index({ postlist }) {
-    console.log(postlist);
+    // console.log(postlist);
     return (
         <>
             <MainBox>

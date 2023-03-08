@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import { modalContext } from "../../context/ModalContext";
+import 짱구 from "../../__mocks__/my_profile_imgs/다운로드.png";
 
 function Modal({ posts, setPosts }) {
     //Posts 데이터 받아왔음
@@ -26,7 +27,7 @@ function Modal({ posts, setPosts }) {
             User: {
                 id: Target.inputId.value,
                 nick_name: Target.inputNickname.value,
-                profile_img: "",
+                profile_img: 짱구,
             },
             Comments: [
                 {

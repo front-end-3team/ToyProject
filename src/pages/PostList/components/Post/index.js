@@ -7,6 +7,7 @@ import { MockPost } from "../../../../__mocks__/post";
 
 function Index() {
   const Posts = MockPost(10);
+  console.log(Posts);
 
   return (
     <>

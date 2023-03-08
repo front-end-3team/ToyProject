@@ -3,12 +3,25 @@ import * as P from "../style";
 
 function Comments({ comments }) {
   const [comment, setComment] = useState(comments);
-  console.log(comment);
+  // console.log(comment);
+
+  const onChangeInputBtn = (id, content) => {
+    const newComment = [...comment];
+    const newEditComment = newComment.find((user) => user.User.id === id);
+    newEditComment.content = "hi";
+    setComment(newEditComment);
+    console.log(newEditComment.content);
+  };
+
+  const onRemoveComment = (id) => {
+    const newComment = comment.filter((user) => user.User.id !== id);
+    setComment(newComment);
+  };
 
   return (
     <>
       {comment.map((comment) => (
-        <P.CommentsBox>
+        <P.CommentsBox key={comment.id}>
           {/* 댓글 프로필 이미지 및 닉네임 */}
           <P.CommentProfile>
             <div src={`${comment.User.profile_img}`}>img</div>
@@ -24,8 +37,16 @@ function Comments({ comments }) {
                 <div>날짜 : {("" + comment.createdAt).slice(0, 24)}</div>
               </div>
               <div>
-                <button>✏️️</button>
-                <button>🗑️</button>
+                <button
+                  onClick={() =>
+                    onChangeInputBtn(comment.User.id, comment.content)
+                  }
+                >
+                  ✏️️
+                </button>
+                <button onClick={() => onRemoveComment(comment.User.id)}>
+                  🗑️
+                </button>
               </div>
             </div>
 

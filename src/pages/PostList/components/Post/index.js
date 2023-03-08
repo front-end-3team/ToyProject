@@ -4,8 +4,6 @@ import Pictures from './Picture/Pictures';
 import styled from 'styled-components';
 
 function Index({ post }) {
-    const commentMock = post.Comments;
-
     return (
         <>
             <MainBox>
@@ -13,7 +11,7 @@ function Index({ post }) {
                 <UnderBox>
                     <P.Contents post={post} />
 
-                    {commentMock.map((commentMock) => (
+                    {post.Comments.map((commentMock) => (
                         <P.Comments commentMock={commentMock} />
                     ))}
                 </UnderBox>

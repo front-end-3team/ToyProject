@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import { MockPost } from '../../../../../__mocks__/post';
 
-function Pictures() {
+function Pictures({ post }) {
     return (
         <>
+            {/* {post.map((el) => ( */}
             <Images>img</Images>
+            {/* ))} */}
         </>
     );
 }

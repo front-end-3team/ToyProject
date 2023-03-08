@@ -1,16 +1,21 @@
-import Contents from "./UnderBox/Contents/Contents";
-import Comments from "./UnderBox/Comments/Comments";
-import Pictures from "./Picture/Pictures";
-import styled from "styled-components";
+import Contents from './UnderBox/Contents/Contents';
+import Comments from './UnderBox/Comments/Comments';
+import Pictures from './Picture/Pictures';
+import styled from 'styled-components';
 
-function Index() {
+function Index({ post }) {
+    const commentMock = post.Comments;
+
     return (
         <>
             <MainBox>
-                <Pictures />
+                <Pictures post={post} />
                 <UnderBox>
-                    <P.Contents />
-                    <P.Comments />
+                    <P.Contents post={post} />
+
+                    {commentMock.map((commentMock) => (
+                        <P.Comments commentMock={commentMock} />
+                    ))}
                 </UnderBox>
             </MainBox>
         </>

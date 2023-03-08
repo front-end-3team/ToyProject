@@ -1,12 +1,12 @@
 import * as P from '../style';
 
-function Comments() {
+function Comments({ commentMock }) {
     return (
         <P.CommentsBox>
             {/* 댓글 프로필 이미지 및 닉네임 */}
             <P.CommentProfile>
-                <div>img</div>
-                <div>닉네임</div>
+                <img src={commentMock.User.profile_img} />
+                <div>{commentMock.User.nick_name}</div>
             </P.CommentProfile>
 
             {/* 댓글 프로필 이미지 그 외 나머지 */}
@@ -14,8 +14,8 @@ function Comments() {
                 {/* 댓글 상단 */}
                 <div>
                     <div>
-                        <div>id030303</div>
-                        <div>작성 날짜</div>
+                        <div>{commentMock.User.id}</div>
+                        <div>작성날짜</div>
                     </div>
                     <div>
                         <button>✏️️</button>
@@ -24,7 +24,7 @@ function Comments() {
                 </div>
 
                 {/* 댓글 하단 */}
-                <div>내용</div>
+                <div>{commentMock.content}</div>
             </P.CommentCenter>
         </P.CommentsBox>
     );

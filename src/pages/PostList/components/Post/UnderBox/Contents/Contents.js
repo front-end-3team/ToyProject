@@ -1,17 +1,17 @@
 import * as P from '../style';
 
-function Contents() {
+function Contents({ post }) {
     return (
         <P.ContentsBox>
             <P.Profile>
-                <div>img</div>
-                <div>닉네임</div>
+                <div>{post.Post_img}</div>
+                <img src={post.User.profile_img} />
             </P.Profile>
 
             <P.ContentsCenter>
                 <div>
                     <div>
-                        <div>id030303</div>
+                        <div>{post.User.nick_name}</div>
                         <div>작성 날짜</div>
                     </div>
                     <div>
@@ -20,7 +20,7 @@ function Contents() {
                     </div>
                 </div>
 
-                <div>내용</div>
+                <div>{post.content}</div>
             </P.ContentsCenter>
         </P.ContentsBox>
     );

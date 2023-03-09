@@ -1,7 +1,7 @@
 import * as P from "../style";
 
 function Contents({ userList }) {
-    console.log(userList);
+    // console.log(userList);
     return (
         <P.ContentsBox>
             <P.Profile>
@@ -13,7 +13,7 @@ function Contents({ userList }) {
                 <div>
                     <div>
                         <div>{userList.User.id}</div>
-                        <div>작성 날짜</div>
+                        <div>{("" + userList.createdAt).slice(0, 24)}</div>
                     </div>
                     <div>
                         <button>✏️️</button>

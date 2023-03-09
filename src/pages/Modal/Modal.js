@@ -2,18 +2,46 @@ import { useRef } from "react";
 import { useContext } from "react";
 import styled from "styled-components";
 import { isModal } from "../../store/Modal_page";
+import 동그리 from "../../assets/images/동그리.jpg";
 
-function Modal() {
+function Modal({ posts, setPosts }) {
     const { isModalOpen, setIsModalOpen } = useContext(isModal);
 
     const modalSubmit = (e) => {
         e.preventDefault();
         const userId = e.target.userId.value;
         const nickName = e.target.nickName.value;
-        const title = e.target.title.value;
         const content = e.target.content.value;
-    };
 
+        setPosts([
+            {
+                content,
+                User: {
+                    id: userId,
+                    nick_name: nickName,
+                    profile_img: 동그리,
+                },
+                Post_img: [{}],
+
+                Comments: [
+                    {
+                        id: "",
+                        content: "",
+                        User: {
+                            id: "",
+                            nick_name: "",
+                            profile_img: "",
+                        },
+                        myComment: "",
+                        createdAt: "",
+                    },
+                ],
+                createdAt: "",
+                myPost: "Y",
+            },
+            ...posts,
+        ]);
+    };
     return (
         <ModalBox onSubmit={modalSubmit}>
             <Top>

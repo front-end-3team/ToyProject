@@ -15,7 +15,7 @@ function Comments({ commentsUserList }) {
                 <div>
                     <div>
                         <div>{commentsUserList.User.id}</div>
-                        <div>작성날짜</div>
+                        <div>{("" + commentsUserList.createdAt).slice(0, 24)}</div>
                     </div>
                     <div>
                         <button>✏️️</button>

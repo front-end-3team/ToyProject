@@ -1,4 +1,4 @@
-const { default: styled } = require('styled-components');
+const { default: styled } = require("styled-components");
 
 export const ContentsBox = styled.div`
     display: flex;

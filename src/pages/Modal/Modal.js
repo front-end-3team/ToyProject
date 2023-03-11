@@ -8,7 +8,7 @@ function Modal({ posts, setPosts }) {
     const { modalview, setModalView } = useContext(modalContext);
     // console.log(Posts);
     const { inputs, setInputs } = useState("");
-
+    const todayDate = new Date();
     //Modal창 작성 버튼
     /*
         1. 작성 버튼 누르면 input값들 객체에 추가 //완료
@@ -16,14 +16,22 @@ function Modal({ posts, setPosts }) {
         4. 객체를 변경하기 위해서 post라는 놈을 state로 관리한다?
         그래야지 unshift를 하던 push를 하던 원본을 교체하려면 이 방법만 있는 건가?
         3. 이거 맨앞에 추가해야함 //
+
+        문제점)
+        input type file이 어떤 건지 경로를 알아야 이미지를 가져 올수있다
+        하지만 보안상의 문제로 C:\fakepath 이런식으로 온다 이걸 어떤식으로 고칠수 있을까?
     */
+    const aa = (e) => {
+        console.log(e.target.value);
+    };
     const addlist = (e) => {
         e.preventDefault();
+        console.log(e.target.file.value);
         const Target = e.target;
         const addInput = {
             id: "taegi",
             content: Target.inputContents.value,
-            Post_img: [],
+            Post_img: [e.target.file.value],
             User: {
                 id: Target.inputId.value,
                 nick_name: Target.inputNickname.value,
@@ -31,19 +39,22 @@ function Modal({ posts, setPosts }) {
             },
             Comments: [
                 {
-                    User: { id: "", nick_name: "", profile_img: "" },
+                    User: {
+                        id: "",
+                        nick_name: "",
+                        profile_img: "",
+                    },
                     content: "",
                     createdAt: "",
-                    id: "",
-                    myComment: "",
+                    id: Math.floor(Math.random() * 10000000),
+                    myComment: "Y",
                 },
             ],
-            myPost: "N",
+            createAt: "",
+            myPost: "Y",
         };
         setPosts([addInput, ...posts]);
         setModalView(false);
-
-        console.log(posts);
     };
     return (
         <ModalBox onSubmit={addlist}>
@@ -91,7 +102,7 @@ function Modal({ posts, setPosts }) {
                 <input type="file" />
             </FileBox> */}
 
-            <File type="file" />
+            <File type="file" name="file" onClick={aa} />
 
             <Button>
                 <button>작성</button>

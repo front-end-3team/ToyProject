@@ -1,3 +1,4 @@
+
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import { modalContext } from "../../context/ModalContext";
@@ -56,6 +57,11 @@ function Modal({ posts, setPosts }) {
         setPosts([addInput, ...posts]);
         setModalView(false);
     };
+
+import styled from "styled-components";
+
+function Modal() {
+
     return (
         <ModalBox onSubmit={addlist}>
             <Top>
@@ -106,7 +112,7 @@ function Modal({ posts, setPosts }) {
 
             <Button>
                 <button>작성</button>
-                <button onClick={() => setModalView(false)}>취소</button>
+                <button>취소</button>
             </Button>
         </ModalBox>
     );

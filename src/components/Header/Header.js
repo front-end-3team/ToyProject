@@ -2,13 +2,8 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faPlus } from "@fortawesome/free-solid-svg-icons";
 import siteLogo from "../../assets/images/logo.png";
-import { modalContext } from "../../context/ModalContext";
-
-import { useContext } from "react";
 
 function Header() {
-    const { modalview, setModalView } = useContext(modalContext);
-
     return (
         <Head>
             <FontAwesomeIcon icon={faBars} />
@@ -18,11 +13,7 @@ function Header() {
                 </div>
                 <span>Instagoraeng</span>
             </Site>
-            <FontAwesomeIcon
-                icon={faPlus}
-                color="#f1404b"
-                onClick={() => setModalView(true)}
-            />
+            <FontAwesomeIcon icon={faPlus} color="#f1404b" />
         </Head>
     );
 }

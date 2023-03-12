@@ -2,15 +2,21 @@ import Contents from "./UnderBox/Contents/Contents";
 import Comments from "./UnderBox/Comments/Comments";
 import Pictures from "./Picture/Pictures";
 import styled from "styled-components";
+
 import Slide from "../../../../components/Slide";
+
 
 function Index({ postlist, posts, setPosts }) {
     // console.log(postlist);
     return (
         <>
             <MainBox>
+
                 <Slide postlist={postlist}></Slide>
                 {/* <Pictures postImg={postlist.Post_img} /> */}
+
+
+                <Pictures />
 
                 <UnderBox>
                     <P.Contents postlist={postlist} />

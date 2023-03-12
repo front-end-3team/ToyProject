@@ -41,11 +41,8 @@ function Comments({ comments, posts, setPosts }) {
     setPosts((prev) => ({
       ...prev,
       Comments: {
-        ...prev.Comments, 
-      }
-      Comments: prev.map((e) =>
-        e.Comments.filter((comment) => comment.id !== el.User.id)
-      ),
+        ...prev.Comments,
+      },
     }));
     console.log(posts);
     // setPost((prev) => ({

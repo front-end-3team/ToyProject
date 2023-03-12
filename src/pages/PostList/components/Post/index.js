@@ -1,17 +1,24 @@
-import Contents from './UnderBox/Contents/Contents';
-import Comments from './UnderBox/Comments/Comments';
-import Pictures from './Picture/Pictures';
-import styled from 'styled-components';
+import Contents from "./UnderBox/Contents/Contents";
+import Comments from "./UnderBox/Comments/Comments";
+import Pictures from "./Picture/Pictures";
+import styled from "styled-components";
+import Slide from "../../../../components/Slide";
 
-function Index() {
+function Index({ postlist, posts, setPosts }) {
+    // console.log(postlist);
     return (
         <>
             <MainBox>
-                <Pictures />
+                <Slide postlist={postlist}></Slide>
+                {/* <Pictures postImg={postlist.Post_img} /> */}
 
                 <UnderBox>
-                    <P.Contents />
-                    <P.Comments />
+                    <P.Contents postlist={postlist} />
+                    <P.Comments
+                        comments={postlist.Comments}
+                        posts={posts}
+                        setPosts={setPosts}
+                    />
                 </UnderBox>
             </MainBox>
         </>

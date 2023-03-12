@@ -1,16 +1,17 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-function Pictures() {
+function Pictures({ el }) {
+    // console.log(postImg);
     return (
         <>
-            <Images>img</Images>
+            <Images src={el} />
         </>
     );
 }
 
 export default Pictures;
 
-const Images = styled.div`
+const Images = styled.img`
     width: 599px;
     height: 350px;
     border: 1px solid;

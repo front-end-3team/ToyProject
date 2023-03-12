@@ -17,8 +17,8 @@ function App() {
   console.log(posts);
   return (
     <>
-      {modalview && <Modal posts={posts} setPosts={setPosts} />}
       <Header />
+      {modalview && <Modal posts={posts} setPosts={setPosts} />}
       {posts.map((el) => (
         <>
           <Index postlist={el} posts={posts} setPosts={setPosts} />

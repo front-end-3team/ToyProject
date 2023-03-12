@@ -9,24 +9,23 @@ function Comments({ comments, posts, setPosts }) {
   const [view, setview] = useState(false);
   const [inputs, setInputs] = useState("");
 
+  const [comment, setComment] = useState(comments);
+
+  const onRemoveComment = (id) => {
+    const newComment = comment.filter((user) => user.User.id !== id);
+    setComment(newComment);
+  };
+
   const onChangeInputs = (e) => {
     const { name, value } = e.target;
     setInputs({ ...inputs, [name]: value });
   };
   const { contents, nickname, name } = inputs;
 
-  // 연필(수정버튼) 누르면 input화면으로 변경
-  // 깊은 복사를 하지않았는데도 수정이 가능하다. 음... 랜더링이되고 있기때문에 이것이 상관없는것인가.
-  // 음...깊은 복사.....배열안에 객체 배열 객체 여서 find여서 어떤식으로 해줘야할지....모르겠다
   const onClickChange = (el) => {
     setview((prev) => !prev);
     if (el.myComment === "N") return alert("자신 댓글만 수정 가능합니다.");
 
-    /*
-            원래 같으면 여기를 깊은 복사해서 새로운 객체 만들어서
-            그 객체를 변경한 후 그걸 useState로 변경한것을 했다. 하지만 이 로직은 위에 랜더링이 있기떄문에
-            이걸 무조건적으로 위에 껄로 바꿔야할까요?
-            */
     el.content = contents;
     el.User.nick_name = name;
     el.User.id = nickname;
@@ -35,43 +34,9 @@ function Comments({ comments, posts, setPosts }) {
     }
   };
 
-  const onRemoveComment = (el) => {
-    // const newComment = comments.filter((user) => user.User.id !== el.User.id);
-
-    setPosts((prev) => ({
-      ...prev,
-      Comments: {
-        ...prev.Comments,
-      },
-    }));
-    console.log(posts);
-    // setPost((prev) => ({
-    //   ...prev,
-    //   Comments: prev.Comments.filter((comment) => comment.id !== id),
-    // }));
-    // const onAddComment = () => {
-    //     setPost((prev) => ({
-    //       ...prev,
-    //       Comments: [
-    //         ...prev.Comments,
-    //         {
-    //           id: commentId.current,
-    //           User: {
-    //             nickname: inputNickname,
-    //           },
-    //           content: inputContent,
-    //           myComment: true,
-    //           isEdit: false,
-    //         },
-    //       ],
-    //     }));
-
-    // setPosts(newComment);
-  };
-
   return (
     <>
-      {comments.map((el) => (
+      {comment.map((el) => (
         <P.CommentsBox>
           {/* 댓글 프로필 이미지 및 닉네임 */}
           <P.CommentProfile>
@@ -98,7 +63,7 @@ function Comments({ comments, posts, setPosts }) {
               </div>
               <div>
                 <button onClick={() => onClickChange(el)}>✏️️</button>
-                <button onClick={() => onRemoveComment(el)}>🗑️</button>
+                <button onClick={() => onRemoveComment(el.User.id)}>🗑️</button>
               </div>
             </div>
             {/* 댓글 하단 */}

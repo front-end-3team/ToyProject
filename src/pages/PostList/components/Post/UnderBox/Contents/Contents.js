@@ -13,7 +13,7 @@ function Contents({ postlist }) {
   const onContentEdit = () => {
     if (postlist.myPost === "Y") {
       setOnEdit((prev) => !prev);
-    } else alert("본인이 작성한 댓글만 삭제 가능합니다!");
+    } else alert("본인이 작성한 댓글만 삭제 가능합니다");
     postlist.User.nick_name = onEditContent.nick;
     postlist.User.id = onEditContent.id;
     postlist.content = onEditContent.content;
